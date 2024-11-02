@@ -1,32 +1,12 @@
 ![@sidebase/nuxt-auth banner](.github/nuxt-auth.jpg)
 
-# @sidebase/nuxt-auth
+# @masosi/nuxt-auth
 
-<!-- Badges Start -->
-<p>
-  <a href="https://npmjs.com/package/@sidebase/nuxt-auth">
-    <img src="https://img.shields.io/npm/v/@sidebase/nuxt-auth.svg?style=flat-square&colorA=202128&colorB=36936A" alt="Version">
-  </a>
-  <a href="https://npmjs.com/package/@sidebase/nuxt-auth">
-    <img src="https://img.shields.io/npm/dm/@sidebase/nuxt-auth.svg?style=flat-square&colorA=202128&colorB=36936A" alt="Downloads">
-  </a>
-  <a href="https://github.com/sidebase/nuxt-auth/stargazers">
-    <img src="https://img.shields.io/github/stars/sidebase/nuxt-auth.svg?style=flat-square&colorA=202128&colorB=36936A" alt="Downloads">
-  </a>
-  <a href="https://github.com/sidebase/nuxt-auth/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/sidebase/nuxt-auth.svg?style=flat-square&colorA=202128&colorB=36936A" alt="License">
-  </a>
-  <a href="https://auth.sidebase.io">
-    <img src="https://img.shields.io/badge/Docs-202128?style=flat-square&logo=gitbook&logoColor=DDDDD4" alt="Docs">
-  </a>
-  <a href="https://x.com/sidebase_io">
-    <img src="https://img.shields.io/badge/Follow_us-202128?style=flat-square&logo=X&logoColor=DDDDD4" alt="Follow us on X">
-  </a>
-  <a href="https://discord.gg/NDDgQkcv3s">
-    <img src="https://img.shields.io/badge/Join_our_Discord-202128?style=flat-square&logo=discord&logoColor=DDDDD4" alt="Join our Discord">
-  </a>
-</p>
-<!-- Badges End -->
+##
+Customised:
+- Added a cookie named auth.data to save the returned 'data' object after authentication. This cookie is then loaded during a full refresh and caches the previous login when the server is unavailable whilst offline.
+  - The cookie uses the same settings as the refresh cookie and it's settings stored in auth/provideer/refresh/* in the config.
+- Changed the Authorization header to the refresh token instead of the auth token when refreshing the auth token. This suits Flask-JWT-Extended better.
 
 > Authentication built for Nuxt 3! Easily add authentication via OAuth providers, credentials or Email Magic URLs!
 
