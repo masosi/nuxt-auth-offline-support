@@ -65,6 +65,38 @@ export function useAuthState(): UseAuthStateReturn {
     })
   }
 
+  // Modified 2/11/24 to support caching of user data. This is to make sure the
+  // state of the authentication isn't lost upon F5 refresh. Keep the authentication variable
+  // 'data' in a cookie, to load upon a new instance. Then load it into the 'auth:data' state.
+
+  // 'auth.data' cookie
+  const _rawDataCookie = useCookie<string | null>('auth.data', {
+    default: () => null,
+    domain: config.token.cookieDomain,
+    maxAge: config.token.maxAgeInSeconds,
+    sameSite: config.token.sameSiteAttribute,
+    secure: config.token.secureCookieAttribute,
+    httpOnly: config.token.httpOnlyCookieAttribute
+  })
+  const rawData = useState('auth:data', () => _rawDataCookie.value)
+  watch(rawData, () => {
+    _rawDataCookie.value = rawData.value
+  })
+  function setData(newData: string | null) {
+    rawData.value = newData
+  }
+  // function clearData() {
+  //   setData(null)
+  // }
+  if (instance) {
+    onMounted(() => {
+      if (_rawDataCookie.value && !rawData.value) {
+        setData(_rawDataCookie.value)
+      }
+    })
+  }
+  // End of 'auth.data' cookie
+
   // Handle refresh token, for when refresh logic is enabled
   const rawRefreshToken = useState<string | null>('auth:raw-refresh-token', () => null)
   if (config.refresh.isEnabled) {
