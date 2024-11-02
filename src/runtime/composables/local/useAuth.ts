@@ -186,10 +186,14 @@ async function refresh(getSessionOptions?: GetSessionOptions) {
   const { path, method } = config.refresh.endpoint
   const refreshRequestTokenPointer = config.refresh.token.refreshRequestTokenPointer
 
-  const { refreshToken, token, rawToken, rawRefreshToken, lastRefreshedAt } = useAuthState()
+  const { refreshToken, rawToken, rawRefreshToken, lastRefreshedAt } = useAuthState()
 
   const headers = new Headers({
-    [config.token.headerName]: token.value
+    // Modified 2/11/24
+    // When getting a new token using the refresh token,
+    // send the refresh token in the Authorization header
+    // instead of the usual token. This is what APIFlask expects
+    [config.token.headerName]: `${config.token.type} ${refreshToken.value}`
   } as HeadersInit)
 
   const response = await _fetch<Record<string, any>>(nuxt, path, {

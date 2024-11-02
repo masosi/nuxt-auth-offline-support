@@ -72,11 +72,11 @@ export function useAuthState(): UseAuthStateReturn {
   // 'auth.data' cookie
   const _rawDataCookie = useCookie<string | null>('auth.data', {
     default: () => null,
-    domain: config.token.cookieDomain,
-    maxAge: config.token.maxAgeInSeconds,
-    sameSite: config.token.sameSiteAttribute,
-    secure: config.token.secureCookieAttribute,
-    httpOnly: config.token.httpOnlyCookieAttribute
+    domain: config.refresh.token.cookieDomain,
+    maxAge: config.refresh.token.maxAgeInSeconds,
+    sameSite: config.refresh.token.sameSiteAttribute,
+    secure: config.refresh.token.secureCookieAttribute,
+    httpOnly: config.refresh.token.httpOnlyCookieAttribute
   })
   const rawData = useState('auth:data', () => _rawDataCookie.value)
   watch(rawData, () => {
