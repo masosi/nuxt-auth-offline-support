@@ -2,12 +2,12 @@
 
 # @masosi/nuxt-auth
 
-##
-Customised:
+## Customised:
 - Added a cookie named auth.data to save the returned 'data' object after authentication. This cookie is then loaded during a full refresh and caches the previous login when the server is unavailable whilst offline.
   - The cookie uses the same settings as the refresh cookie and it's settings stored in auth/provideer/refresh/* in the config.
 - Changed the Authorization header to the refresh token instead of the auth token when refreshing the auth token. This suits Flask-JWT-Extended better.
 
+## nuxt-auth:
 > Authentication built for Nuxt 3! Easily add authentication via OAuth providers, credentials or Email Magic URLs!
 
 ## Quick Start
