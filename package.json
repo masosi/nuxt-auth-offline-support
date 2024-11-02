@@ -1,11 +1,11 @@
 {
-  "name": "@sidebase/nuxt-auth",
+  "name": "@masosi/nuxt-auth",
   "version": "0.9.4",
   "license": "MIT",
   "type": "module",
   "description": "Authentication built for Nuxt 3! Easily add authentication via OAuth providers, credentials or Email Magic URLs!",
   "homepage": "https://auth.sidebase.io",
-  "repository": "github:sidebase/nuxt-auth",
+  "repository": "github:masosi/nuxt-auth",
   "engines": {
     "pnpm": ">=9.4.0",
     "node": ">=20"
